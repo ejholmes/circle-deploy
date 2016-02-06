@@ -32,7 +32,7 @@ func deployment(w http.ResponseWriter, r *http.Request) {
 	raw, err := json.Marshal(buildRequest{
 		BuildParameters: map[string]string{
 			"GITHUB_DEPLOYMENT":             fmt.Sprintf("%d", event.Deployment.ID),
-			"GITHUB_DEPLOYMENT_ENVIRONMENT": fmt.Sprintf("%d", event.Deployment.Environment),
+			"GITHUB_DEPLOYMENT_ENVIRONMENT": fmt.Sprintf("%d", *event.Deployment.Environment),
 		},
 	})
 	if err != nil {
