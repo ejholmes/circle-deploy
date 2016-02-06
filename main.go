@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -16,6 +17,11 @@ type buildRequest struct {
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		io.WriteString(w, "OK")
+		return
+	}
+
 	var event events.Deployment
 
 	if err := json.NewDecoder(r.Body).Decode(&event); err != nil {
