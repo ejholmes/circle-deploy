@@ -1,0 +1,13 @@
+{
+	"ImportPath": "github.com/ejholmes/circle-deploy",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/ejholmes/hookshot/events",
+			"Rev": "4802bea385193a8f3268b38a2918d46049931d6b"
+		}
+	]
+}
