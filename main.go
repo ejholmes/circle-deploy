@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"net/http"
 	"os"
@@ -18,7 +17,7 @@ type buildRequest struct {
 }
 
 func ping(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "OK")
+	http.Redirect(w, r, "https://github.com/ejholmes/circle-deploy#readme", 301)
 }
 
 func deployment(w http.ResponseWriter, r *http.Request) {
