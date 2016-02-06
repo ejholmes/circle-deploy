@@ -6,8 +6,12 @@
 	],
 	"Deps": [
 		{
-			"ImportPath": "github.com/ejholmes/hookshot/events",
+			"ImportPath": "github.com/ejholmes/hookshot",
 			"Rev": "4802bea385193a8f3268b38a2918d46049931d6b"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "04b9de9b512f58addf28c9853d50ebef61c3953e"
 		}
 	]
 }

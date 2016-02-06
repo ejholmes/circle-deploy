@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/ejholmes/hookshot"
 	"github.com/ejholmes/hookshot/events"
 )
 
@@ -16,12 +17,11 @@ type buildRequest struct {
 	BuildParameters map[string]string `json:"build_parameters"`
 }
 
-func handle(w http.ResponseWriter, r *http.Request) {
-	if r.Method == "GET" {
-		io.WriteString(w, "OK")
-		return
-	}
+func ping(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "OK")
+}
 
+func deployment(w http.ResponseWriter, r *http.Request) {
 	var event events.Deployment
 
 	if err := json.NewDecoder(r.Body).Decode(&event); err != nil {
@@ -57,6 +57,10 @@ func handle(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.Handle("/", http.HandlerFunc(handle))
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+	r := hookshot.NewRouter()
+	r.HandleFunc("ping", ping)
+	r.HandleFunc("deployment", deployment)
+	r.NotFoundHandler = http.HandlerFunc(ping)
+
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), r))
 }
