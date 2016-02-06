@@ -14,4 +14,5 @@ When this app receives a GitHub deployment request for a repo, it will use the [
 
 Parameter | Description
 ----------|------------
-`GITHUB_DEPLOYMENT` | Set to the id of the GitHub deployment. You can use this to determine if you should run tests or do a deployment |
+`GITHUB_DEPLOYMENT` | Set to the id of the GitHub deployment. You can use this to determine if you should run tests or do a deployment
+`GITHUB_DEPLOYMENT_ENVIRONMENT` | The environment that was requested to be deployed to
