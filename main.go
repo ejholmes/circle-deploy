@@ -45,6 +45,8 @@ func deployment(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Accept", "application/json")
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
