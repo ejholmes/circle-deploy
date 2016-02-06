@@ -1,5 +1,7 @@
 # Circle Deploy
 
+GitHub Deployments -> CircleCI Glue.
+
 This is a small webhook that can be used to trigger CircleCI builds from GitHub Deployments.
 
 ## Usage
